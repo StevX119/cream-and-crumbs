@@ -4,48 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Cream & Crumbs Café</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background-color: #fdf5e6; color: #4b3621; line-height: 1.8; }
-        nav { background-color: #ffffff; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        nav img { height: 50px; vertical-align: middle; }
-        nav a { text-decoration: none; color: #4b3621; margin: 0 20px; font-weight: 600; transition: 0.3s; }
-        nav a:hover { color: #d2691e; }
-
-        .about-section { max-width: 800px; margin: 60px auto; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; text-align: center; margin-bottom: 10px; }
-        .divider { width: 80px; height: 4px; background: #d2691e; margin: 20px auto 40px; }
+        :root { --coffee: #4b3621; --cream: #fdf5e6; --accent: #d2691e; }
         
-        .content { text-align: justify; font-size: 1.1rem; }
-        .highlight { color: #d2691e; font-weight: 600; }
+        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+        
+        body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--coffee); overflow-x: hidden; }
 
-        footer { background: #4b3621; color: white; padding: 20px; text-align: center; margin-top: 50px; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal { animation: fadeInUp 1.2s ease-out; }
+
+        nav { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        nav img { height: 60px; }
+        .nav-links a { text-decoration: none; color: var(--coffee); margin-left: 30px; font-weight: 600; position: relative; }
+        .nav-links a::after { content: ''; width: 0; height: 2px; background: var(--accent); position: absolute; bottom: -5px; left: 0; transition: 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+
+        .container { max-width: 1100px; margin: 80px auto; padding: 0 20px; }
+        
+        .about-wrapper { 
+            display: flex; 
+            align-items: center; 
+            gap: 60px; 
+            background: white; 
+            padding: 70px; 
+            border-radius: 40px; 
+            box-shadow: 0 25px 70px rgba(0,0,0,0.05); 
+        }
+
+        .about-text { flex: 1.2; }
+        .about-image { flex: 0.8; text-align: center; }
+        .about-image img { width: 100%; max-width: 350px; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1)); }
+
+        h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0; }
+        .divider { width: 60px; height: 5px; background: var(--accent); margin: 25px 0; }
+        
+        p { line-height: 2; font-size: 1.15rem; text-align: justify; opacity: 0.9; }
+        .highlight { color: var(--accent); font-weight: 600; }
+
+        footer { background: var(--coffee); color: white; padding: 40px; text-align: center; margin-top: 100px; }
+
+        @media (max-width: 768px) {
+            .about-wrapper { flex-direction: column; padding: 40px; text-align: center; }
+            h1 { font-size: 3rem; }
+            .divider { margin: 20px auto; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <img src="logo.png" alt="Logo">
-        <a href="index.html">Home</a>
-        <a href="service.html">Services</a>
-        <a href="about.html">About</a>
+        <img src="logo.png" alt="Cream & Crumbs Logo">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="service.html">Service</a>
+            <a href="about.html">About</a>
+        </div>
     </nav>
 
-    <div class="about-section">
-        <h1>About Cream & Crumbs</h1>
-        <div class="divider"></div>
-        
-        <div class="content">
-            <p>Welcome to <span class="highlight">Cream & Crumbs</span>, where every cup and every bite tells a story . Our café is more than just a place to grab a coffee; it’s a community hub dedicated to providing a pleasant and easy shopping experience for everyone. </p>
-            
-            <p>At Cream & Crumbs, our mission is to <span class="highlight">provide quality coffee, creamy shakes, and delicious treats</span> that you can enjoy from the comfort of your own home 
-            <p>Our products are made with high-quality ingredients, and our team is passionate about delivering exceptional service . Whether you’re looking for a quick caffeine fix or a sweet indulgence, we’ve got you covered .</p>
+    <div class="container reveal">
+        <div class="about-wrapper">
+            <div class="about-text">
+                <h1>About Us</h1>
+                <div class="divider"></div>
+                <p>
+                    Welcome to <span class="highlight">Cream & Crumbs</span>, where every cup and every bite tells a story. 
+                    Our café is more than just a place to grab a coffee; it’s a community hub dedicated to 
+                    providing a pleasant and easy shopping experience for everyone.
+                </p>
+                <p>
+                    Our mission is to <span class="highlight">provide quality coffee, creamy shakes, and delicious treats</span> 
+                    that you can enjoy from the comfort of your own home. We believe that everyone deserves a break, 
+                    and we are committed to making that break as delightful as possible.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="logo.png" alt="Cream & Crumbs Concept">
+            </div>
         </div>
     </div>
 
-    <footer>
-        &copy; 2026 Cream & Crumbs Café. All Rights Reserved.
-    </footer>
+    <footer>&copy; 2026 Cream & Crumbs Café. Professional Taste, Quality Service.</footer>
 
 </body>
 </html>
