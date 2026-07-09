@@ -1,77 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cream & Crumbs Café | Welcome</title>
+    <!-- Menggunakan Font Modern dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* 1. Pengaturan Background dan Font Umum */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #fdf5e6; /* Warna Cream Lembut */
+            color: #4b3621; /* Warna Cokelat Kopi */
+        }
 
-<h1 style="font-size:112px;text-align:center;">WELCOME</h1>
-<p style="font-size:55px;text-align:center">to<p/>
-<div style="text-align:center;"><img style="width: 33%;"style="lenght:
-33%;"src="logo.png"><div></div>
-<div style="text-align:cente; margin-top:40px;">
-<a style="padding-right: 20px;" href="index.html">Home</a>
-<a style="padding-right: 20px;"href="service.html">Services</a>
-<a style="padding-right: 20px;"href="about.html">About</a>
-</div>
-<p style="font-size:35px;text-align:center""Where Sweet Treats Meet Great Coffee."</p>
-<hr>
-<p style="font-size:30px;text-align:center; line-height: 40px;">Welcome to Cream &
-Crumbs, your online destination for delicious coffee, creamy shakes, and irresistible
-sweet treats. We are passionate about serving high-quality drinks and desserts that
-bring comfort and happiness with every order. Whether you're craving a refreshing
-shake, a freshly brewed cup of coffee, or a delightful snack, Cream & Crumbs is here to
-satisfy your cravings. With convenient online ordering and friendly service, we aim to
-make every sweet moment just a click away.<p/>
-<hr>
-<p style="font-size:45px;text-align:center">Our Best Seller<p/>
-<img style="width: 33%;"src="action.png">
-<img style="width: 33%;"src="afiyet olsun 😋😋.jpeg">
-<img style="width: 33%;"src="Homemade Caramel Iced Coffee.jpeg">
+        /* 2. Navigasi Modern */
+        nav {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav img { height: 50px; vertical-align: middle; }
+        nav a {
+            text-decoration: none;
+            color: #4b3621;
+            margin: 0 20px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        nav a:hover { color: #d2691e; }
 
+        /* 3. Hero Section (Bagian Sambutan dengan Gambar) */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* Background Kopi Estetik */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0; }
+        .hero p { font-size: 1.2rem; font-style: italic; }
 
-<h1 style="font-size:112px;text-align:center;">SERVICES</h1>
-<div style="text-align:center;"><img style="width: 33%;"style="lenght:
-33%;"src="logo.png"><div></div>
-<div style="text-align:cente; margin-top:40px;">
-<a style="padding-right: 20px;" href="index.html">Home</a>
-<a style="padding-right: 20px;"href="servives.html">Services</a>
-<a style="padding-right: 20px;"href="about.html">About</a
-</div>
-<p style="font-size:35px;text-align:center""Where Sweet Treats Meet Great Coffee."</p>
-<hr>
-<p style="font-size:30px;text-align:center; line-height: 40px;">Welcome to Cream &
-Crumbs, your online destination for delicious coffee, creamy shakes, and irresistible
-sweet treats. We are passionate about serving high-quality drinks and desserts that
-bring comfort and happiness with every order. Whether you're craving a refreshing
-shake, a freshly brewed cup of coffee, or a delightful snack, Cream & Crumbs is here to
-satisfy your cravings. With convenient online ordering and friendly service, we aim to
-make every sweet moment just a click away.<p/>
-<hr>
-<p style="font-size:45px;text-align:center">Order Now!<p/>
-<img style="width: 33%;"src="price.png">
+        /* 4. Bagian Best Seller (Grid Layout) */
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; text-align: center; }
+        .best-seller-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 250px; object-fit: cover; }
+        .card h3 { padding: 15px; margin: 0; }
 
+        footer { background: #4b3621; color: white; padding: 20px; text-align: center; margin-top: 50px; }
+    </style>
+</head>
+<body>
 
-<h1 style="font-size:112px;text-align:center;">About Cream & Crumbs</h1>
-<div style="text-align:center;"><img style="width: 33%;"style="lenght:
-33%;"src="logo.png"><div></div>
-<div style="text-align:cente; margin-top:40px;">
-<a style="padding-right: 20px;" href="index.html">Home</a>
-<a style="padding-right: 20px;"href="servives.html">Services</a>
-<a style="padding-right: 20px;"href="about.html">About</a
-</div>
-<p style="font-size:35px;text-align:center""Where Sweet Treats Meet Great Coffee."</p>
-<hr>
-<p style="font-size:30px;text-align:center; line-height: 40px;">Welcome to Cream &
-Crumbs, your online destination for delicious coffee, creamy shakes, and irresistible
-sweet treats. We are passionate about serving high-quality drinks and desserts that
-bring comfort and happiness with every order. Whether you're craving a refreshing
-shake, a freshly brewed cup of coffee, or a delightful snack, Cream & Crumbs is here to
-satisfy your cravings. With convenient online ordering and friendly service, we aim to
-make every sweet moment just a click away.Welcome to Cream & Crumbs – Where
-Sweet Treats Meet Great Coffee.
-At Cream & Crumbs, we believe every day deserves a little sweetness. We are an online
-café dedicated to serving freshly brewed coffee, creamy shakes, and delicious sweet
-treats made with quality ingredients and care. Whether you're starting your morning with
-a rich cup of coffee, cooling down with a refreshing shake, or satisfying your sweet
-cravings, we're here to make every moment more enjoyable.
-Our goal is to provide a convenient and delightful online shopping experience by offering
-affordable, high-quality products with friendly service and reliable delivery. We are
-passionate about bringing comfort, flavor, and happiness straight to your doorstep.
-Thank you for choosing Cream & Crumbs. We look forward to serving you—one sip, one
-bite, and one smile at a time. ☕🥤🍰<p/>
-<hr>
+    <nav>
+        <img src="logo.png" alt="Logo">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <div class="hero">
+        <h1>WELCOME</h1>
+        <p>Where Sweet Treats Meet Great Coffee</p>
+    </div>
+
+    <div class="container">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Our Best Sellers</h2>
+        <div class="best-seller-grid">
+            <!-- Produk 1 -->
+            <div class="card">
+                <img src="13792342604774392.jpeg" alt="Product 1">
+                <h3>Signature Cake</h3>
+            </div>
+            <!-- Produk 2 -->
+            <div class="card">
+                <img src="afiyet olsun 😋😋.jpeg" alt="Product 2">
+                <h3>Afternoon Delight</h3>
+            </div>
+            <!-- Produk 3 -->
+            <div class="card">
+                <img src="Homemade Caramel Iced Coffee.jpeg" alt="Product 3">
+                <h3>Caramel Iced Coffee</h3>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Cream & Crumbs Café. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
