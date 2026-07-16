@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cream & Crumbs | The Divine Visual Menu</title>
+    <title>Cream & Crumbs | Ultimate Multi-Order</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #c5a059; --coffee: #1a0f07; --glass: rgba(255, 255, 255, 0.05); }
-        * { box-sizing: border-box; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        * { box-sizing: border-box; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         
         body { 
             margin: 0; font-family: 'Poppins', sans-serif; 
@@ -15,13 +15,12 @@
             color: #fdf5e6; padding-bottom: 100px;
         }
 
-        /* Navigasi */
         nav { 
-            background: rgba(0,0,0,0.85); padding: 15px 5%; display: flex; 
+            background: rgba(0,0,0,0.9); padding: 15px 5%; display: flex; 
             justify-content: space-between; align-items: center; position: sticky; 
             top: 0; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid var(--gold); 
         }
-        nav img { height: 45px; filter: drop-shadow(0 0 5px var(--gold)); }
+        nav img { height: 45px; }
         .nav-links a { text-decoration: none; color: white; margin-left: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
 
         .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
@@ -33,7 +32,6 @@
             border-left: 6px solid var(--gold); padding-left: 20px; margin: 80px 0 30px; 
         }
         
-        /* Grid Menu dengan Gambar Masing-masing */
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
         
         .menu-item { 
@@ -41,19 +39,17 @@
             border-radius: 25px; padding: 15px; text-align: center; cursor: pointer; position: relative;
         }
         .menu-item img { width: 100%; height: 180px; object-fit: cover; border-radius: 20px; margin-bottom: 15px; }
-        .menu-item h4 { margin: 10px 0; font-size: 1rem; color: #fff; letter-spacing: 1px; }
-        .menu-item:hover { transform: translateY(-12px); border-color: var(--gold); background: rgba(197, 160, 89, 0.1); }
+        .menu-item h4 { margin: 10px 0; font-size: 1rem; color: #fff; }
         
-        /* Highlight Pilihan */
-        .menu-item.selected { background: var(--gold) !important; box-shadow: 0 0 40px var(--gold); }
+        /* State Saat Dipilih (Bisa lebih dari 2) */
+        .menu-item.selected { background: var(--gold) !important; transform: scale(1.05); box-shadow: 0 0 40px var(--gold); }
         .menu-item.selected h4 { color: var(--coffee) !important; font-weight: 700; }
         .menu-item.selected::after { 
-            content: '✓'; position: absolute; top: 15px; right: 15px; 
-            background: var(--coffee); color: var(--gold); width: 35px; height: 35px; 
-            border-radius: 50%; line-height: 35px; font-weight: bold; 
+            content: 'SELECTED'; position: absolute; top: 10px; right: 10px; 
+            background: var(--coffee); color: var(--gold); padding: 5px 10px;
+            border-radius: 10px; font-size: 0.6rem; font-weight: bold;
         }
 
-        /* Formulir Akhir */
         .order-form-box { 
             background: rgba(0,0,0,0.4); padding: 50px; border-radius: 40px; 
             margin-top: 100px; border: 1px solid rgba(197, 160, 89, 0.3); backdrop-filter: blur(10px);
@@ -61,8 +57,7 @@
         input, textarea { 
             width: 100%; background: rgba(0, 0, 0, 0.6) !important; 
             border: 1px solid var(--gold); padding: 20px; border-radius: 15px; 
-            color: #ffffff !important; font-family: 'Poppins'; margin-bottom: 25px; 
-            outline: none; font-size: 1rem;
+            color: #ffffff !important; font-family: 'Poppins'; margin-bottom: 25px; outline: none;
         }
         .summary-box { 
             background: rgba(197, 160, 89, 0.1); padding: 25px; border-radius: 15px; 
@@ -74,7 +69,6 @@
             border: none; border-radius: 50px; font-weight: 700; cursor: pointer; 
             font-size: 1.5rem; letter-spacing: 3px; text-transform: uppercase;
         }
-        .submit-btn:hover { background: #fff; transform: scale(1.02); box-shadow: 0 0 30px #fff; }
     </style>
 </head>
 <body>
@@ -89,162 +83,78 @@
     </nav>
 
     <div class="container">
-        <h1>THE DIVINE MENU</h1>
-        <p class="slogan">"Where Sweet Treats Meet Great Coffee."</p>
+        <h1>PREMIUM ORDER</h1>
+        <p class="slogan">"Where Sweet Treats Meet Great Coffee." [2]</p>
 
-        <!-- CATEGORY 1: COFFEE (10 Menu with Images) -->
-        <h2 class="category-title">Elite Coffee Brews</h2>
+        <!-- KATEGORI COFFEE -->
+        <h2 class="category-title">Coffee Selection</h2>
         <div class="menu-grid">
-            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Caramel Iced Coffee')">
-                <img src="Homemade Caramel Iced Coffee.jpeg">
+            <div class="menu-item" onclick="toggleSelection(this, 'Caramel Iced Coffee')">
+                <img src="Homemade Caramel Iced Coffee.jpeg"> <!-- Dari Sumber [2] -->
                 <h4>Caramel Iced Coffee</h4>
             </div>
-            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Midnight Espresso')">
-                <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=400&q=80">
+            <div class="menu-item" onclick="toggleSelection(this, 'Midnight Espresso')">
+                <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400">
                 <h4>Midnight Espresso</h4>
             </div>
-            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Classic Americano')">
-                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80">
-                <h4>Classic Americano</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Velvet Latte')">
-                <img src="https://images.unsplash.com/photo-1536939459926-301728717817?auto=format&fit=crop&w=400&q=80">
-                <h4>Velvet Latte</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Cappuccino Gold')">
-                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80">
-                <h4>Cappuccino Gold</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Vanilla Macchiato')">
-                <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=400&q=80">
-                <h4>Vanilla Macchiato</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Mocha Indulgence')">
-                <img src="https://images.unsplash.com/photo-1544787210-2213d84ad96b?auto=format&fit=crop&w=400&q=80">
-                <h4>Mocha Indulgence</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Hazelnut Infusion')">
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=400&q=80">
-                <h4>Hazelnut Infusion</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Cold Brew Soul')">
-                <img src="https://images.unsplash.com/photo-1461023233307-535730e2c301?auto=format&fit=crop&w=400&q=80">
-                <h4>Cold Brew Soul</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Irish Cream Brew')">
-                <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=400&q=80">
-                <h4>Irish Cream Brew</h4>
-            </div>
+            <!-- Ulangi sampai 10 menu dengan gambar unik -->
+            <script>
+                const extraCoffees = ["Classic Americano", "Velvet Latte", "Cappuccino Gold", "Vanilla Macchiato", "Mocha Indulgence", "Hazelnut Brew", "Cold Brew Soul", "Irish Cream"];
+                extraCoffees.forEach((name, i) => {
+                    document.write(`<div class="menu-item" onclick="toggleSelection(this, '${name}')">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&sig=${i}">
+                        <h4>${name}</h4></div>`);
+                });
+            </script>
         </div>
 
-        <!-- CATEGORY 2: CAKES & TREATS (10 Menu with Images) -->
-        <h2 class="category-title">Signature Cakes & Treats</h2>
+        <!-- KATEGORI CAKES -->
+        <h2 class="category-title">Signature Cakes</h2>
         <div class="menu-grid">
-            <div class="menu-item" onclick="selectItem(this, 'treats', 'Signature Chocolate Cake')">
-                <img src="13792342604774392.jpeg">
+            <div class="menu-item" onclick="toggleSelection(this, 'Signature Chocolate Cake')">
+                <img src="13792342604774392.jpeg"> <!-- Dari Sumber [2] -->
                 <h4>Signature Cake</h4>
             </div>
-            <div class="menu-item" onclick="selectItem(this, 'treats', 'New York Cheesecake')">
-                <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=400&q=80">
-                <h4>New York Cheesecake</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'treats', 'Red Velvet Fantasy')">
-                <img src="https://images.unsplash.com/photo-1586788680434-30d324671b1c?auto=format&fit=crop&w=400&q=80">
-                <h4>Red Velvet Fantasy</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'treats', 'Classic Tiramisu')">
-                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=400&q=80">
-                <h4>Classic Tiramisu</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'treats', 'Berry Shortcake')">
-                <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=400&q=80">
-                <h4>Berry Shortcake</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'treats', 'Blueberry Muffin')">
-                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80">
-                <h4>Blueberry Muffin</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'treats', 'Almond Croissant')">
-                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&q=80">
-                <h4>Almond Croissant</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'treats', 'Rainbow Mille Crepe')">
-                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=400&q=80">
-                <h4>Rainbow Mille Crepe</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'treats', 'Zesty Carrot Cake')">
-                <img src="https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?auto=format&fit=crop&w=400&q=80">
-                <h4>Zesty Carrot Cake</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'treats', 'Molten Lava Cake')">
-                <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=400&q=80">
-                <h4>Molten Lava Cake</h4>
-            </div>
+            <script>
+                const cakes = ["NY Cheesecake", "Red Velvet", "Classic Tiramisu", "Berry Shortcake", "Blueberry Muffin", "Almond Croissant", "Rainbow Crepe", "Carrot Cake", "Lava Cake"];
+                cakes.forEach((name, i) => {
+                    document.write(`<div class="menu-item" onclick="toggleSelection(this, '${name}')">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&sig=${i+10}">
+                        <h4>${name}</h4></div>`);
+                });
+            </script>
         </div>
 
-        <!-- CATEGORY 3: SHAKES (10 Menu with Images) -->
-        <h2 class="category-title">Pure Creamy Shakes</h2>
+        <!-- KATEGORI SHAKES -->
+        <h2 class="category-title">Creamy Shakes</h2>
         <div class="menu-grid">
-            <div class="menu-item" onclick="selectItem(this, 'shakes', 'Afternoon Delight Shake')">
-                <img src="afiyet olsun 😋😋.jpeg">
+            <div class="menu-item" onclick="toggleSelection(this, 'Afternoon Delight Shake')">
+                <img src="afiyet olsun 😋😋.jpeg"> <!-- Dari Sumber [2] -->
                 <h4>Afternoon Delight</h4>
             </div>
-            <div class="menu-item" onclick="selectItem(this, 'shakes', 'Pure Vanilla Cloud')">
-                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80">
-                <h4>Pure Vanilla Cloud</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'shakes', 'Double Choco Blast')">
-                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=400&q=80">
-                <h4>Double Choco Blast</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'shakes', 'Strawberry Dream')">
-                <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=400&q=80">
-                <h4>Strawberry Dream</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'shakes', 'Oreo Overload')">
-                <img src="https://images.unsplash.com/photo-1579954115545-a95591f28be0?auto=format&fit=crop&w=400&q=80">
-                <h4>Oreo Overload</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'shakes', 'Avocado Supreme')">
-                <img src="https://images.unsplash.com/photo-1543647501-fac980b62477?auto=format&fit=crop&w=400&q=80">
-                <h4>Avocado Supreme</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'shakes', 'Matcha Zen')">
-                <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=400&q=80">
-                <h4>Matcha Zen</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'shakes', 'Salted Caramel Silk')">
-                <img src="https://images.unsplash.com/photo-1541658016709-82535e94bc71?auto=format&fit=crop&w=400&q=80">
-                <h4>Salted Caramel Silk</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'shakes', 'Banana Fusion')">
-                <img src="https://images.unsplash.com/photo-1553784184-4199ed3015a1?auto=format&fit=crop&w=400&q=80">
-                <h4>Banana Fusion</h4>
-            </div>
-            <div class="menu-item" onclick="selectItem(this, 'shakes', 'Tropical Mango')">
-                <img src="https://images.unsplash.com/photo-1532509176311-6677f52554e2?auto=format&fit=crop&w=400&q=80">
-                <h4>Tropical Mango</h4>
-            </div>
+            <script>
+                const shakes = ["Vanilla Cloud", "Choco Blast", "Strawberry Dream", "Oreo Overload", "Avocado Supreme", "Matcha Zen", "Salted Caramel", "Banana Fusion", "Tropical Mango"];
+                shakes.forEach((name, i) => {
+                    document.write(`<div class="menu-item" onclick="toggleSelection(this, '${name}')">
+                        <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&sig=${i+20}">
+                        <h4>${name}</h4></div>`);
+                });
+            </script>
         </div>
 
-        <!-- FORM FINAL -->
         <div class="order-form-box">
-            <h2 style="color:var(--gold); text-align:center; margin-bottom:40px; font-family:'Playfair Display'">FINALIZE YOUR SELECTION</h2>
-            <form id="finalOrderForm">
-                <input type="text" id="custName" placeholder="Enter Your Full Name" required>
-                <textarea id="custAddress" placeholder="Enter Detailed Delivery Address" rows="3" required></textarea>
-                
+            <form id="multiOrderForm">
+                <input type="text" id="custName" placeholder="Your Name" required>
+                <textarea id="custAddress" placeholder="Delivery Address" rows="3" required></textarea>
                 <div class="summary-box">
-                    <p style="margin-bottom: 10px;"><strong>Order Summary:</strong></p>
-                    <p id="summaryText">Please click the images above to build your order.</p>
+                    <strong>Selected Items:</strong>
+                    <div id="selectedList">None (Click images to add)</div>
                 </div>
-
-                <button type="submit" class="submit-btn">CONFIRM & DISPATCH ORDER</button>
+                <button type="submit" class="submit-btn">PLACE MULTI-ORDER</button>
             </form>
         </div>
     </div>
 
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script>
@@ -260,32 +170,30 @@
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
-        let selections = { coffee: "", treats: "", shakes: "" };
+        let myOrders = [];
 
-        function selectItem(element, category, name) {
-            const siblings = element.parentElement.querySelectorAll('.menu-item');
-            siblings.forEach(el => el.classList.remove('selected'));
-            element.classList.add('selected');
-            selections[category] = name;
-            
-            document.getElementById('summaryText').innerHTML = 
-                `☕ <b>Coffee:</b> ${selections.coffee || '-'} <br> 
-                 🍰 <b>Treats:</b> ${selections.treats || '-'} <br> 
-                 🥤 <b>Shake:</b> ${selections.shakes || '-'}`;
+        function toggleSelection(element, itemName) {
+            element.classList.toggle('selected');
+            if (element.classList.contains('selected')) {
+                myOrders.push(itemName);
+            } else {
+                myOrders = myOrders.filter(item => item !== itemName);
+            }
+            document.getElementById('selectedList').innerText = myOrders.length > 0 ? myOrders.join(", ") : "None";
         }
 
-        document.getElementById('finalOrderForm').addEventListener('submit', function(e) {
+        document.getElementById('multiOrderForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            if(!selections.coffee && !selections.treats && !selections.shakes) {
-                alert("Choose at least one item first!"); return;
-            }
+            if(myOrders.length === 0) { alert("Please select at least one item!"); return; }
+            
             database.ref('orders').push().set({
                 customer: document.getElementById('custName').value,
                 address: document.getElementById('custAddress').value,
-                items: selections,
-                date: new Date().toLocaleString()
+                items: myOrders,
+                total_items: myOrders.length,
+                timestamp: new Date().toLocaleString()
             }).then(() => {
-                alert("Order Embarked! Check your Firebase Console. ✅");
+                alert("Order for " + myOrders.length + " items received! ✅");
                 window.location.href = "index.html";
             });
         });
