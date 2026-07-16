@@ -3,54 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cream & Crumbs | Visual Order Experience</title>
+    <title>Cream & Crumbs | Elite Visual Order</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #c5a059; --coffee: #1a0f07; --glass: rgba(255, 255, 255, 0.05); }
         * { box-sizing: border-box; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        
         body { 
-            margin: 0; font-family: 'Poppins', sans-serif; background: var(--coffee); 
-            color: white; padding-bottom: 100px;
+            margin: 0; font-family: 'Poppins', sans-serif; 
+            background: radial-gradient(circle, #2c1e12 0%, #1a0f07 100%); 
+            color: #fdf5e6; padding-bottom: 100px;
         }
 
-        /* Navigasi */
-        nav { background: rgba(0,0,0,0.8); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--gold); }
-        nav img { height: 40px; }
-        .nav-links a { text-decoration: none; color: white; margin-left: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+        /* Navigasi Modern */
+        nav { 
+            background: rgba(0,0,0,0.85); padding: 15px 5%; display: flex; 
+            justify-content: space-between; align-items: center; position: sticky; 
+            top: 0; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid var(--gold); 
+        }
+        nav img { height: 45px; filter: drop-shadow(0 0 5px var(--gold)); }
+        .nav-links a { text-decoration: none; color: white; margin-left: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
         .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
         h1 { font-family: 'Playfair Display', serif; text-align: center; font-size: 3.5rem; color: var(--gold); margin: 0; }
-        .slogan { text-align: center; letter-spacing: 3px; opacity: 0.6; margin-bottom: 50px; }
+        .slogan { text-align: center; letter-spacing: 3px; opacity: 0.7; margin-bottom: 50px; font-style: italic; }
 
-        /* Kategori Styling */
-        .category-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); border-left: 5px solid var(--gold); padding-left: 15px; margin: 60px 0 30px; }
+        /* Kategori Title */
+        .category-title { 
+            font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); 
+            border-left: 6px solid var(--gold); padding-left: 20px; margin: 60px 0 30px; 
+        }
         
-        /* Grid Menu */
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        /* Grid Menu Visual */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
         
         .menu-item { 
-            background: var(--glass); border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 20px; padding: 15px; text-align: center; cursor: pointer; position: relative;
+            background: var(--glass); border: 1px solid rgba(197, 160, 89, 0.2); 
+            border-radius: 25px; padding: 20px; text-align: center; cursor: pointer; position: relative;
         }
-        .menu-item img { width: 100%; height: 150px; object-fit: cover; border-radius: 15px; margin-bottom: 15px; }
-        .menu-item h4 { margin: 10px 0 5px; font-size: 0.9rem; }
-        .menu-item:hover { transform: translateY(-10px); border-color: var(--gold); background: rgba(197, 160, 89, 0.1); }
+        .menu-item img { width: 100%; height: 160px; object-fit: cover; border-radius: 15px; margin-bottom: 15px; }
+        .menu-item h4 { margin: 10px 0; font-size: 1rem; color: #fff; }
+        .menu-item:hover { transform: translateY(-12px); border-color: var(--gold); background: rgba(197, 160, 89, 0.1); }
         
-        /* State saat item diklik/dipilih */
-        .menu-item.selected { border: 2px solid var(--gold); background: rgba(197, 160, 89, 0.2); box-shadow: 0 0 20px var(--gold); }
-        .menu-item.selected::after { content: '✓'; position: absolute; top: 10px; right: 10px; background: var(--gold); color: var(--coffee); width: 25px; height: 25px; border-radius: 50%; line-height: 25px; font-weight: bold; }
+        /* Fix Visibilitas Saat Dipilih */
+        .menu-item.selected { 
+            background: var(--gold) !important; 
+            box-shadow: 0 0 30px var(--gold);
+        }
+        .menu-item.selected h4 { color: var(--coffee) !important; font-weight: 700; }
+        .menu-item.selected::after { 
+            content: '✓'; position: absolute; top: 15px; right: 15px; 
+            background: var(--coffee); color: var(--gold); width: 30px; height: 30px; 
+            border-radius: 50%; line-height: 30px; font-weight: bold; 
+        }
 
-        /* Form Bawah */
-        .order-form-box { background: var(--glass); padding: 40px; border-radius: 30px; margin-top: 80px; border: 1px solid rgba(197, 160, 89, 0.2); }
-        input, textarea { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--gold); padding: 15px; border-radius: 10px; color: white; margin-bottom: 20px; outline: none; }
-        .submit-btn { width: 100%; padding: 20px; background: var(--gold); color: var(--coffee); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; font-size: 1.2rem; }
-        .submit-btn:hover { background: white; transform: scale(1.02); }
+        /* Box Formulir Akhir */
+        .order-form-box { 
+            background: rgba(0,0,0,0.4); padding: 50px; border-radius: 40px; 
+            margin-top: 80px; border: 1px solid rgba(197, 160, 89, 0.3); backdrop-filter: blur(10px);
+        }
+        
+        /* FIX: Input text visibility issues */
+        input, textarea { 
+            width: 100%; background: rgba(0, 0, 0, 0.6) !important; 
+            border: 1px solid var(--gold); padding: 18px; border-radius: 15px; 
+            color: #ffffff !important; font-family: 'Poppins'; margin-bottom: 25px; 
+            outline: none; font-size: 1rem;
+        }
+        input:focus { border-color: #fff; box-shadow: 0 0 15px var(--gold); }
+        ::placeholder { color: rgba(255,255,255,0.4); }
+
+        .summary-box { 
+            background: rgba(197, 160, 89, 0.1); padding: 25px; border-radius: 15px; 
+            margin-bottom: 30px; border-left: 5px solid var(--gold); 
+        }
+        #summaryText { color: var(--gold); font-weight: 600; line-height: 1.6; }
+
+        .submit-btn { 
+            width: 100%; padding: 22px; background: var(--gold); color: var(--coffee); 
+            border: none; border-radius: 50px; font-weight: 700; cursor: pointer; 
+            font-size: 1.3rem; letter-spacing: 2px; text-transform: uppercase;
+        }
+        .submit-btn:hover { background: #fff; transform: scale(1.02); box-shadow: 0 0 30px #fff; }
     </style>
 </head>
 <body>
 
     <nav>
-        <img src="logo.png" alt="Logo">
+        <img src="logo.png" alt="Cream & Crumbs Logo">
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="service.html">Services</a>
@@ -62,18 +102,16 @@
         <h1>ORDER MENU</h1>
         <p class="slogan">"Where Sweet Treats Meet Great Coffee."</p>
 
-        <!-- Category: Coffee -->
-        <h2 class="category-title">Freshly Brewed Coffee</h2>
+        <!-- KATEGORI 1: COFFEE (10 Menu) -->
+        <h2 class="category-title">Elite Coffee Selection</h2>
         <div class="menu-grid" id="coffeeGrid">
-            <!-- 10 Options here -->
-            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Homemade Caramel Iced Coffee')">
+            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Caramel Iced Coffee')">
                 <img src="Homemade Caramel Iced Coffee.jpeg">
                 <h4>Caramel Iced Coffee</h4>
             </div>
-            <!-- Other options use placeholders for variety -->
             <script>
-                const coffeeNames = ["Classic Americano", "Creamy Latte", "Cappuccino Luxe", "Vanilla Macchiato", "Mocha Blast", "Hazelnut Brew", "Cold Brew Soul", "Irish Velvet", "Double Espresso"];
-                coffeeNames.forEach(name => {
+                const coffees = ["Espresso Shot", "Classic Americano", "Caffe Latte", "Cappuccino Luxe", "Vanilla Macchiato", "Mocha Delight", "Hazelnut Brew", "Cold Brew Soul", "Irish Cream Coffee"];
+                coffees.forEach(name => {
                     document.write(`
                         <div class="menu-item" onclick="selectItem(this, 'coffee', '${name}')">
                             <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=300&q=80">
@@ -84,16 +122,16 @@
             </script>
         </div>
 
-        <!-- Category: Cakes & Treats -->
-        <h2 class="category-title">Sweet Treats & Cakes</h2>
+        <!-- KATEGORI 2: CAKES & TREATS (10 Menu) -->
+        <h2 class="category-title">Signature Cakes & Treats</h2>
         <div class="menu-grid" id="treatsGrid">
             <div class="menu-item" onclick="selectItem(this, 'treats', 'Signature Chocolate Cake')">
                 <img src="13792342604774392.jpeg">
                 <h4>Signature Cake</h4>
             </div>
             <script>
-                const treatNames = ["New York Cheese", "Red Velvet Fantasy", "Tiramisu Dream", "Berry Shortcake", "Blueberry Muffin", "Almond Croissant", "Rainbow Crepe", "Carrot Delight", "Lava Cake"];
-                treatNames.forEach(name => {
+                const treats = ["New York Cheesecake", "Red Velvet Fantasy", "Classic Tiramisu", "Strawberry Shortcake", "Blueberry Muffin", "Almond Croissant", "Rainbow Mille Crepe", "Zesty Carrot Cake", "Molten Lava Cake"];
+                treats.forEach(name => {
                     document.write(`
                         <div class="menu-item" onclick="selectItem(this, 'treats', '${name}')">
                             <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80">
@@ -104,16 +142,16 @@
             </script>
         </div>
 
-        <!-- Category: Shakes -->
-        <h2 class="category-title">Creamy Shakes</h2>
+        <!-- KATEGORI 3: SHAKES (10 Menu) -->
+        <h2 class="category-title">Pure Creamy Shakes</h2>
         <div class="menu-grid" id="shakesGrid">
             <div class="menu-item" onclick="selectItem(this, 'shakes', 'Afternoon Delight Shake')">
                 <img src="afiyet olsun 😋😋.jpeg">
                 <h4>Afternoon Delight</h4>
             </div>
             <script>
-                const shakeNames = ["Vanilla Cloud", "Choco Blast", "Strawberry Dream", "Oreo Overload", "Avocado Silk", "Matcha Zen", "Salted Caramel", "Berry Fusion", "Mango Tango"];
-                shakeNames.forEach(name => {
+                const shakes = ["Pure Vanilla Shake", "Double Chocolate Blast", "Strawberry Dream", "Oreo Overload", "Avocado Supreme", "Matcha Zen", "Salted Caramel", "Banana Fusion", "Tropical Mango"];
+                shakes.forEach(name => {
                     document.write(`
                         <div class="menu-item" onclick="selectItem(this, 'shakes', '${name}')">
                             <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80">
@@ -124,27 +162,28 @@
             </script>
         </div>
 
-        <!-- Final Order Form -->
+        <!-- KONFIRMASI PESANAN -->
         <div class="order-form-box">
-            <h2 style="color:var(--gold); text-align:center;">Finalize Your Order</h2>
+            <h2 style="color:var(--gold); text-align:center; margin-bottom:30px;">Finalize Your Order</h2>
             <form id="finalOrderForm">
-                <input type="text" id="custName" placeholder="Your Name" required>
-                <textarea id="custAddress" placeholder="Delivery Address" required></textarea>
+                <input type="text" id="custName" placeholder="Your Full Name" required>
+                <textarea id="custAddress" placeholder="Full Delivery Address" rows="3" required></textarea>
                 
-                <div style="background:rgba(0,0,0,0.5); padding:20px; border-radius:10px; margin-bottom:20px;">
-                    <p><strong>Your Selections:</strong></p>
-                    <p id="summaryText" style="color:var(--gold);">Please click on the images above to select your menu.</p>
+                <div class="summary-box">
+                    <p style="margin-bottom: 10px;"><strong>Your Current Selection:</strong></p>
+                    <p id="summaryText">Please click on the items above to select your order.</p>
                 </div>
 
-                <button type="submit" class="submit-btn">CONFIRM & SEND ORDER</button>
+                <button type="submit" class="submit-btn">CONFIRM & SEND TO SYSTEM</button>
             </form>
         </div>
     </div>
 
-    <!-- Firebase SDK & Script -->
+    <!-- Firebase Integration -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script>
+        // Konfigurasi Firebase dari akun Anda
         const firebaseConfig = {
           apiKey: "AIzaSyD2IZrX7xpG9hU_8Rfx2th9-Gbbb7zTQ9k",
           authDomain: "cream-and-crumbs.firebaseapp.com",
@@ -160,33 +199,35 @@
         let selections = { coffee: "", treats: "", shakes: "" };
 
         function selectItem(element, category, name) {
-            // Hilangkan pilihan lama di kategori yang sama
+            // Reset pilihan di kategori yang sama
             const siblings = element.parentElement.querySelectorAll('.menu-item');
             siblings.forEach(el => el.classList.remove('selected'));
             
-            // Pilih item baru
+            // Tandai item yang diklik
             element.classList.add('selected');
             selections[category] = name;
             
-            // Update Teks Ringkasan
-            document.getElementById('summaryText').innerText = 
-                `Coffee: ${selections.coffee || '-'}, Treats: ${selections.treats || '-'}, Shakes: ${selections.shakes || '-'}`;
+            // Perbarui teks ringkasan
+            document.getElementById('summaryText').innerHTML = 
+                `☕ Coffee: ${selections.coffee || '-'} <br> 
+                 🍰 Treats: ${selections.treats || '-'} <br> 
+                 🥤 Shake: ${selections.shakes || '-'}`;
         }
 
         document.getElementById('finalOrderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             if(!selections.coffee && !selections.treats && !selections.shakes) {
-                alert("Please select at least one item!");
+                alert("Please select at least one delicious item first!");
                 return;
             }
 
             database.ref('orders').push().set({
                 customer: document.getElementById('custName').value,
                 address: document.getElementById('custAddress').value,
-                order: selections,
-                timestamp: new Date().toLocaleString()
+                items: selections,
+                order_date: new Date().toLocaleString()
             }).then(() => {
-                alert("Success! Your elite order is on its way. ✅");
+                alert("Order Saved! Your sweet treats are coming soon. ✅");
                 window.location.href = "index.html";
             });
         });
