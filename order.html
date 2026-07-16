@@ -3,130 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cream & Crumbs | Elite Order System</title>
+    <title>Cream & Crumbs | Visual Order Experience</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --coffee: #2c1e12; --gold: #c5a059; --cream: #fdf5e6; }
-        * { box-sizing: border-box; transition: 0.5s ease; }
+        :root { --gold: #c5a059; --coffee: #1a0f07; --glass: rgba(255, 255, 255, 0.05); }
+        * { box-sizing: border-box; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         body { 
-            margin: 0; font-family: 'Poppins', sans-serif; 
-            background: fixed linear-gradient(45deg, #1a0f07, #2c1e12); 
-            color: white; min-height: 100vh; padding: 50px 20px;
+            margin: 0; font-family: 'Poppins', sans-serif; background: var(--coffee); 
+            color: white; padding-bottom: 100px;
         }
+
+        /* Navigasi */
+        nav { background: rgba(0,0,0,0.8); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--gold); }
+        nav img { height: 40px; }
+        .nav-links a { text-decoration: none; color: white; margin-left: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+
+        .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
+        h1 { font-family: 'Playfair Display', serif; text-align: center; font-size: 3.5rem; color: var(--gold); margin: 0; }
+        .slogan { text-align: center; letter-spacing: 3px; opacity: 0.6; margin-bottom: 50px; }
+
+        /* Kategori Styling */
+        .category-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); border-left: 5px solid var(--gold); padding-left: 15px; margin: 60px 0 30px; }
         
-        .order-container { 
-            max-width: 700px; margin: 0 auto; 
-            background: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(25px); 
-            border: 1px solid rgba(197, 160, 89, 0.2); 
-            padding: 60px; border-radius: 50px; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.6); 
-        }
-
-        h1 { 
-            font-family: 'Playfair Display', serif; text-align: center; 
-            color: var(--gold); letter-spacing: 5px; font-size: 3rem; margin-bottom: 10px; 
-        }
-        .slogan { text-align: center; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 50px; opacity: 0.6; }
-
-        .form-section { margin-bottom: 35px; }
-        label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; }
+        /* Grid Menu */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
         
-        input, select, textarea { 
-            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(197, 160, 89, 0.3); 
-            padding: 15px; border-radius: 15px; color: white; font-family: 'Poppins'; outline: none;
+        .menu-item { 
+            background: var(--glass); border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 20px; padding: 15px; text-align: center; cursor: pointer; position: relative;
         }
-        input:focus, select:focus { border-color: white; box-shadow: 0 0 15px rgba(197, 160, 89, 0.3); }
+        .menu-item img { width: 100%; height: 150px; object-fit: cover; border-radius: 15px; margin-bottom: 15px; }
+        .menu-item h4 { margin: 10px 0 5px; font-size: 0.9rem; }
+        .menu-item:hover { transform: translateY(-10px); border-color: var(--gold); background: rgba(197, 160, 89, 0.1); }
+        
+        /* State saat item diklik/dipilih */
+        .menu-item.selected { border: 2px solid var(--gold); background: rgba(197, 160, 89, 0.2); box-shadow: 0 0 20px var(--gold); }
+        .menu-item.selected::after { content: '✓'; position: absolute; top: 10px; right: 10px; background: var(--gold); color: var(--coffee); width: 25px; height: 25px; border-radius: 50%; line-height: 25px; font-weight: bold; }
 
-        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-
-        .submit-btn { 
-            width: 100%; padding: 20px; background: var(--gold); color: var(--coffee); 
-            border: none; border-radius: 50px; font-weight: 600; cursor: pointer; 
-            font-size: 1.1rem; letter-spacing: 2px; margin-top: 30px;
-            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.3);
-        }
-        .submit-btn:hover { background: white; transform: scale(1.03); }
+        /* Form Bawah */
+        .order-form-box { background: var(--glass); padding: 40px; border-radius: 30px; margin-top: 80px; border: 1px solid rgba(197, 160, 89, 0.2); }
+        input, textarea { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--gold); padding: 15px; border-radius: 10px; color: white; margin-bottom: 20px; outline: none; }
+        .submit-btn { width: 100%; padding: 20px; background: var(--gold); color: var(--coffee); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; font-size: 1.2rem; }
+        .submit-btn:hover { background: white; transform: scale(1.02); }
     </style>
 </head>
 <body>
 
-    <div class="order-container">
-        <h1>ORDER NOW</h1>
+    <nav>
+        <img src="logo.png" alt="Logo">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="service.html">Services</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>ORDER MENU</h1>
         <p class="slogan">"Where Sweet Treats Meet Great Coffee."</p>
 
-        <form id="orderForm">
-            <!-- Customer Identity -->
-            <div class="form-section">
-                <label>Customer Name</label>
-                <input type="text" id="custName" placeholder="Enter your full name" required>
+        <!-- Category: Coffee -->
+        <h2 class="category-title">Freshly Brewed Coffee</h2>
+        <div class="menu-grid" id="coffeeGrid">
+            <!-- 10 Options here -->
+            <div class="menu-item" onclick="selectItem(this, 'coffee', 'Homemade Caramel Iced Coffee')">
+                <img src="Homemade Caramel Iced Coffee.jpeg">
+                <h4>Caramel Iced Coffee</h4>
             </div>
+            <!-- Other options use placeholders for variety -->
+            <script>
+                const coffeeNames = ["Classic Americano", "Creamy Latte", "Cappuccino Luxe", "Vanilla Macchiato", "Mocha Blast", "Hazelnut Brew", "Cold Brew Soul", "Irish Velvet", "Double Espresso"];
+                coffeeNames.forEach(name => {
+                    document.write(`
+                        <div class="menu-item" onclick="selectItem(this, 'coffee', '${name}')">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=300&q=80">
+                            <h4>${name}</h4>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
 
-            <!-- Coffee Selection (10 Options) -->
-            <div class="form-section">
-                <label>Coffee Selection</label>
-                <select id="coffeeOrder">
-                    <option value="None">- No Coffee Selected -</option>
-                    <option>Espresso Shot</option>
-                    <option>Classic Americano</option>
-                    <option>Caffe Latte</option>
-                    <option>Creamy Cappuccino</option>
-                    <option>Caramel Macchiato</option>
-                    <option>Mocha Delight</option>
-                    <option>Vanilla Bean Latte</option>
-                    <option>Hazelnut Infusion</option>
-                    <option>Signature Cold Brew</option>
-                    <option>Irish Cream Coffee</option>
-                </select>
+        <!-- Category: Cakes & Treats -->
+        <h2 class="category-title">Sweet Treats & Cakes</h2>
+        <div class="menu-grid" id="treatsGrid">
+            <div class="menu-item" onclick="selectItem(this, 'treats', 'Signature Chocolate Cake')">
+                <img src="13792342604774392.jpeg">
+                <h4>Signature Cake</h4>
             </div>
+            <script>
+                const treatNames = ["New York Cheese", "Red Velvet Fantasy", "Tiramisu Dream", "Berry Shortcake", "Blueberry Muffin", "Almond Croissant", "Rainbow Crepe", "Carrot Delight", "Lava Cake"];
+                treatNames.forEach(name => {
+                    document.write(`
+                        <div class="menu-item" onclick="selectItem(this, 'treats', '${name}')">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80">
+                            <h4>${name}</h4>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
 
-            <!-- Cake & Treats Selection (10 Options) -->
-            <div class="form-section">
-                <label>Sweet Treats & Cakes</label>
-                <select id="cakeOrder">
-                    <option value="None">- No Cake Selected -</option>
-                    <option>Signature Chocolate Cake</option>
-                    <option>New York Cheesecake</option>
-                    <option>Red Velvet Fantasy</option>
-                    <option>Classic Tiramisu</option>
-                    <option>Strawberry Shortcake</option>
-                    <option>Blueberry Glazed Muffin</option>
-                    <option>Almond Butter Croissant</option>
-                    <option>Rainbow Mille Crepe</option>
-                    <option>Zesty Carrot Cake</option>
-                    <option>Molten Lava Cake</option>
-                </select>
+        <!-- Category: Shakes -->
+        <h2 class="category-title">Creamy Shakes</h2>
+        <div class="menu-grid" id="shakesGrid">
+            <div class="menu-item" onclick="selectItem(this, 'shakes', 'Afternoon Delight Shake')">
+                <img src="afiyet olsun 😋😋.jpeg">
+                <h4>Afternoon Delight</h4>
             </div>
+            <script>
+                const shakeNames = ["Vanilla Cloud", "Choco Blast", "Strawberry Dream", "Oreo Overload", "Avocado Silk", "Matcha Zen", "Salted Caramel", "Berry Fusion", "Mango Tango"];
+                shakeNames.forEach(name => {
+                    document.write(`
+                        <div class="menu-item" onclick="selectItem(this, 'shakes', '${name}')">
+                            <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80">
+                            <h4>${name}</h4>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
 
-            <!-- Shakes Selection (10 Options) -->
-            <div class="form-section">
-                <label>Creamy Shakes</label>
-                <select id="shakeOrder">
-                    <option value="None">- No Shake Selected -</option>
-                    <option>Pure Vanilla Shake</option>
-                    <option>Double Chocolate Blast</option>
-                    <option>Strawberry Dream</option>
-                    <option>Oreo Overload Shake</option>
-                    <option>Avocado Supreme</option>
-                    <option>Matcha Zen Shake</option>
-                    <option>Salted Caramel Dream</option>
-                    <option>Banana Berry Fusion</option>
-                    <option>Tropical Mango Tango</option>
-                    <option>Mint Choco Heaven</option>
-                </select>
-            </div>
+        <!-- Final Order Form -->
+        <div class="order-form-box">
+            <h2 style="color:var(--gold); text-align:center;">Finalize Your Order</h2>
+            <form id="finalOrderForm">
+                <input type="text" id="custName" placeholder="Your Name" required>
+                <textarea id="custAddress" placeholder="Delivery Address" required></textarea>
+                
+                <div style="background:rgba(0,0,0,0.5); padding:20px; border-radius:10px; margin-bottom:20px;">
+                    <p><strong>Your Selections:</strong></p>
+                    <p id="summaryText" style="color:var(--gold);">Please click on the images above to select your menu.</p>
+                </div>
 
-            <div class="form-section">
-                <label>Delivery Address & Notes</label>
-                <textarea id="custAddress" rows="3" placeholder="Enter your address and special requests..."></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">SEND TO KITCHEN</button>
-        </form>
-        <p style="text-align: center; margin-top: 30px; font-size: 0.7rem; opacity: 0.4;">&copy; 2026 CREAM & CRUMBS CAFÉ</p>
+                <button type="submit" class="submit-btn">CONFIRM & SEND ORDER</button>
+            </form>
+        </div>
     </div>
 
-    <!-- Firebase Integration -->
+    <!-- Firebase SDK & Script -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script>
@@ -142,22 +157,37 @@
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const orderData = {
-                customer: document.getElementById('custName').value,
-                coffee: document.getElementById('coffeeOrder').value,
-                cake: document.getElementById('cakeOrder').value,
-                shake: document.getElementById('shakeOrder').value,
-                address: document.getElementById('custAddress').value,
-                timestamp: new Date().toLocaleString()
-            };
+        let selections = { coffee: "", treats: "", shakes: "" };
 
-            database.ref('orders').push().set(orderData)
-            .then(() => { 
-                alert("Order Embarked! Our baristas are on it. ✅"); 
-                window.location.href = "index.html"; 
+        function selectItem(element, category, name) {
+            // Hilangkan pilihan lama di kategori yang sama
+            const siblings = element.parentElement.querySelectorAll('.menu-item');
+            siblings.forEach(el => el.classList.remove('selected'));
+            
+            // Pilih item baru
+            element.classList.add('selected');
+            selections[category] = name;
+            
+            // Update Teks Ringkasan
+            document.getElementById('summaryText').innerText = 
+                `Coffee: ${selections.coffee || '-'}, Treats: ${selections.treats || '-'}, Shakes: ${selections.shakes || '-'}`;
+        }
+
+        document.getElementById('finalOrderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if(!selections.coffee && !selections.treats && !selections.shakes) {
+                alert("Please select at least one item!");
+                return;
+            }
+
+            database.ref('orders').push().set({
+                customer: document.getElementById('custName').value,
+                address: document.getElementById('custAddress').value,
+                order: selections,
+                timestamp: new Date().toLocaleString()
+            }).then(() => {
+                alert("Success! Your elite order is on its way. ✅");
+                window.location.href = "index.html";
             });
         });
     </script>
