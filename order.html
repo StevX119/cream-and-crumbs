@@ -3,43 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Now | Cream & Crumbs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Cream & Crumbs | Order Database</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --coffee: #4b3621; --cream: #fdf5e6; --accent: #d2691e; }
+        * { box-sizing: border-box; transition: all 0.4s ease; }
         body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--coffee); }
-        .container { max-width: 600px; margin: 60px auto; padding: 40px; background: white; border-radius: 30px; box-shadow: 0 15px 50px rgba(0,0,0,0.05); }
+        
+        nav { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        nav img { height: 60px; }
+        .nav-links a { text-decoration: none; color: var(--coffee); margin-left: 30px; font-weight: 600; }
+
+        .container { max-width: 600px; margin: 60px auto; padding: 40px; background: white; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
+        h1 { font-family: 'Playfair Display', serif; text-align: center; font-size: 2.5rem; margin-bottom: 30px; }
+        
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; }
-        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; }
-        .btn { width: 100%; padding: 15px; background: var(--accent); color: white; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; font-family: 'Poppins', sans-serif; }
+        input:focus { border-color: var(--accent); outline: none; }
+
+        .submit-btn { 
+            width: 100%; padding: 15px; background: var(--coffee); color: white; border: none; 
+            border-radius: 50px; font-weight: 600; cursor: pointer; font-size: 1.1rem; margin-top: 20px;
+        }
+        .submit-btn:hover { background: var(--accent); transform: scale(1.02); }
+        
+        #statusMessage { text-align: center; margin-top: 20px; font-weight: 600; display: none; }
     </style>
 </head>
 <body>
+    <nav>
+        <img src="logo.png" alt="Logo">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <h2 style="text-align:center">Place Your Order</h2>
+        <h1>Place Your Order</h1>
+        <p style="text-align: center; opacity: 0.7; margin-bottom: 30px;">"Where Sweet Treats Meet Great Coffee."</p>
+        
         <form id="orderForm">
-            <div class="form-group"><label>Name</label><input type="text" id="name" required></div>
-            <div class="form-group"><label>Menu Choice</label>
-                <select id="menu">
-                    <option>Iced Coffee</option>
-                    <option>Creamy Shake</option>
-                    <option>Sweet Treats</option>
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="custName" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label>Select Menu</label>
+                <select id="custMenu" required>
+                    <option value="">-- Choose Item --</option>
+                    <option>Signature Cake</option>
+                    <option>Afternoon Delight</option>
+                    <option>Caramel Iced Coffee</option>
                 </select>
             </div>
-            <div class="form-group"><label>Address</label><textarea id="address" rows="3"></textarea></div>
-            <button type="button" class="btn" onclick="sendWA()">Send via WhatsApp</button>
+            <div class="form-group">
+                <label>Delivery Address</label>
+                <textarea id="custAddress" rows="3" placeholder="Your address" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Confirm & Save Order</button>
         </form>
+        <div id="statusMessage"></div>
     </div>
+
+    <!-- Firebase SDK (Koneksi ke Database) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
     <script>
-        function sendWA() {
-            const name = document.getElementById('name').value;
-            const menu = document.getElementById('menu').value;
-            const address = document.getElementById('address').value;
-            const phone = "6285881194549"; // GANTI DENGAN NOMOR WA ANDA
-            const msg = `Halo Cream %26 Crumbs Café,%0ANama: ${name}%0APesanan: ${menu}%0AAlamat: ${address}`;
-            window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
-        }
+        // MASUKKAN KONFIGURASI FIREBASE ANDA DI SINI
+        const firebaseConfig = {
+            apiKey: "ISI_API_KEY_ANDA",
+            authDomain: "PROJECT_ANDA.firebaseapp.com",
+            databaseURL: "https://PROJECT_ANDA.firebaseio.com",
+            projectId: "PROJECT_ANDA",
+            storageBucket: "PROJECT_ANDA.appspot.com",
+            messagingSenderId: "NOMOR_ID",
+            appId: "APP_ID_ANDA"
+        };
+
+        // Inisialisasi Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Proses Simpan Data
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('custName').value;
+            const menu = document.getElementById('custMenu').value;
+            const address = document.getElementById('custAddress').value;
+            const status = document.getElementById('statusMessage');
+
+            // Simpan ke folder 'orders' di Firebase
+            const newOrderRef = database.ref('orders').push();
+            newOrderRef.set({
+                customer_name: name,
+                item_ordered: menu,
+                delivery_address: address,
+                order_date: new Date().toLocaleString()
+            })
+            .then(() => {
+                status.style.display = "block";
+                status.innerText = "Order successfully saved to Database! ✅";
+                status.style.color = "green";
+                document.getElementById('orderForm').reset();
+            })
+            .catch((error) => {
+                status.innerText = "Error: " + error.message;
+                status.style.color = "red";
+            });
+        });
     </script>
 </body>
 </html>
