@@ -3,51 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cream & Crumbs | Order Excellence</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Cream & Crumbs | Elite Order System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --coffee: #2c1e12; --gold: #c5a059; --cream: #fdf5e6; }
-        body { margin: 0; font-family: 'Poppins', sans-serif; background: fixed linear-gradient(45deg, #1a0f07, #2c1e12); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        * { box-sizing: border-box; transition: 0.5s ease; }
+        body { 
+            margin: 0; font-family: 'Poppins', sans-serif; 
+            background: fixed linear-gradient(45deg, #1a0f07, #2c1e12); 
+            color: white; min-height: 100vh; padding: 50px 20px;
+        }
         
-        .order-container { width: 90%; max-width: 500px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 50px; border-radius: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
-        h1 { text-align: center; color: var(--gold); letter-spacing: 3px; font-weight: 300; margin-bottom: 40px; }
-        
-        .input-group { margin-bottom: 25px; position: relative; }
-        input, select, textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--gold); padding: 10px 0; color: white; font-family: 'Poppins'; font-size: 1rem; outline: none; }
-        label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); }
-        
-        .submit-btn { width: 100%; padding: 15px; background: var(--gold); color: var(--coffee); border: none; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 30px; box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3); }
-        .submit-btn:hover { background: white; transform: scale(1.05); }
+        .order-container { 
+            max-width: 700px; margin: 0 auto; 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(25px); 
+            border: 1px solid rgba(197, 160, 89, 0.2); 
+            padding: 60px; border-radius: 50px; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6); 
+        }
 
-        .back-home { display: block; text-align: center; margin-top: 20px; color: white; text-decoration: none; font-size: 0.8rem; opacity: 0.5; }
+        h1 { 
+            font-family: 'Playfair Display', serif; text-align: center; 
+            color: var(--gold); letter-spacing: 5px; font-size: 3rem; margin-bottom: 10px; 
+        }
+        .slogan { text-align: center; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 50px; opacity: 0.6; }
+
+        .form-section { margin-bottom: 35px; }
+        label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; }
+        
+        input, select, textarea { 
+            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(197, 160, 89, 0.3); 
+            padding: 15px; border-radius: 15px; color: white; font-family: 'Poppins'; outline: none;
+        }
+        input:focus, select:focus { border-color: white; box-shadow: 0 0 15px rgba(197, 160, 89, 0.3); }
+
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        .submit-btn { 
+            width: 100%; padding: 20px; background: var(--gold); color: var(--coffee); 
+            border: none; border-radius: 50px; font-weight: 600; cursor: pointer; 
+            font-size: 1.1rem; letter-spacing: 2px; margin-top: 30px;
+            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.3);
+        }
+        .submit-btn:hover { background: white; transform: scale(1.03); }
     </style>
 </head>
 <body>
+
     <div class="order-container">
-        <h1>PLACE ORDER</h1>
+        <h1>ORDER NOW</h1>
+        <p class="slogan">"Where Sweet Treats Meet Great Coffee."</p>
+
         <form id="orderForm">
-            <div class="input-group">
-                <label>Name</label>
-                <input type="text" id="custName" required>
+            <!-- Customer Identity -->
+            <div class="form-section">
+                <label>Customer Name</label>
+                <input type="text" id="custName" placeholder="Enter your full name" required>
             </div>
-            <div class="input-group">
-                <label>Product</label>
-                <select id="custMenu">
-                    <option>Signature Cake</option>
-                    <option>Creamy Shakes</option>
-                    <option>Caramel Iced Coffee</option>
+
+            <!-- Coffee Selection (10 Options) -->
+            <div class="form-section">
+                <label>Coffee Selection</label>
+                <select id="coffeeOrder">
+                    <option value="None">- No Coffee Selected -</option>
+                    <option>Espresso Shot</option>
+                    <option>Classic Americano</option>
+                    <option>Caffe Latte</option>
+                    <option>Creamy Cappuccino</option>
+                    <option>Caramel Macchiato</option>
+                    <option>Mocha Delight</option>
+                    <option>Vanilla Bean Latte</option>
+                    <option>Hazelnut Infusion</option>
+                    <option>Signature Cold Brew</option>
+                    <option>Irish Cream Coffee</option>
                 </select>
             </div>
-            <div class="input-group">
-                <label>Note to Barista</label>
-                <textarea id="custNote" rows="2"></textarea>
+
+            <!-- Cake & Treats Selection (10 Options) -->
+            <div class="form-section">
+                <label>Sweet Treats & Cakes</label>
+                <select id="cakeOrder">
+                    <option value="None">- No Cake Selected -</option>
+                    <option>Signature Chocolate Cake</option>
+                    <option>New York Cheesecake</option>
+                    <option>Red Velvet Fantasy</option>
+                    <option>Classic Tiramisu</option>
+                    <option>Strawberry Shortcake</option>
+                    <option>Blueberry Glazed Muffin</option>
+                    <option>Almond Butter Croissant</option>
+                    <option>Rainbow Mille Crepe</option>
+                    <option>Zesty Carrot Cake</option>
+                    <option>Molten Lava Cake</option>
+                </select>
             </div>
-            <button type="submit" class="submit-btn">SEND TO SYSTEM</button>
+
+            <!-- Shakes Selection (10 Options) -->
+            <div class="form-section">
+                <label>Creamy Shakes</label>
+                <select id="shakeOrder">
+                    <option value="None">- No Shake Selected -</option>
+                    <option>Pure Vanilla Shake</option>
+                    <option>Double Chocolate Blast</option>
+                    <option>Strawberry Dream</option>
+                    <option>Oreo Overload Shake</option>
+                    <option>Avocado Supreme</option>
+                    <option>Matcha Zen Shake</option>
+                    <option>Salted Caramel Dream</option>
+                    <option>Banana Berry Fusion</option>
+                    <option>Tropical Mango Tango</option>
+                    <option>Mint Choco Heaven</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <label>Delivery Address & Notes</label>
+                <textarea id="custAddress" rows="3" placeholder="Enter your address and special requests..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">SEND TO KITCHEN</button>
         </form>
-        <a href="index.html" class="back-home">← Back to Sanctuary</a>
+        <p style="text-align: center; margin-top: 30px; font-size: 0.7rem; opacity: 0.4;">&copy; 2026 CREAM & CRUMBS CAFÉ</p>
     </div>
 
-    <!-- Firebase SDK (Koneksi ke Database Kamu) -->
+    <!-- Firebase Integration -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script>
@@ -65,14 +144,20 @@
 
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            database.ref('orders').push().set({
-                name: document.getElementById('custName').value,
-                item: document.getElementById('custMenu').value,
-                note: document.getElementById('custNote').value,
-                date: new Date().toLocaleString()
-            }).then(() => { 
-                alert("Order Embarked! See you soon. ✅"); 
-                window.location.href = "index.html";
+            
+            const orderData = {
+                customer: document.getElementById('custName').value,
+                coffee: document.getElementById('coffeeOrder').value,
+                cake: document.getElementById('cakeOrder').value,
+                shake: document.getElementById('shakeOrder').value,
+                address: document.getElementById('custAddress').value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            database.ref('orders').push().set(orderData)
+            .then(() => { 
+                alert("Order Embarked! Our baristas are on it. ✅"); 
+                window.location.href = "index.html"; 
             });
         });
     </script>
