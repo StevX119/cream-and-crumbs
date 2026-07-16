@@ -3,76 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cream & Crumbs | Order Database</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Cream & Crumbs | Order Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --coffee: #4b3621; --cream: #fdf5e6; --accent: #d2691e; }
-        * { box-sizing: border-box; transition: all 0.4s ease; }
-        body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--coffee); }
+        :root { --coffee: #2c1e12; --gold: #c5a059; --cream: #fdf5e6; }
+        body { margin: 0; font-family: 'Poppins', sans-serif; background: fixed linear-gradient(45deg, #1a0f07, #2c1e12); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
         
-        nav { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        nav img { height: 60px; }
-        .nav-links a { text-decoration: none; color: var(--coffee); margin-left: 30px; font-weight: 600; }
+        .order-container { width: 90%; max-width: 500px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 50px; border-radius: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
+        h1 { text-align: center; color: var(--gold); letter-spacing: 3px; font-weight: 300; margin-bottom: 40px; }
+        
+        .input-group { margin-bottom: 25px; position: relative; }
+        input, select, textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--gold); padding: 10px 0; color: white; font-family: 'Poppins'; font-size: 1rem; outline: none; }
+        label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); }
+        
+        .submit-btn { width: 100%; padding: 15px; background: var(--gold); color: var(--coffee); border: none; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 30px; box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3); }
+        .submit-btn:hover { background: white; transform: scale(1.05); }
 
-        .container { max-width: 600px; margin: 60px auto; padding: 40px; background: white; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
-        h1 { font-family: 'Playfair Display', serif; text-align: center; font-size: 2.5rem; margin-bottom: 30px; }
-        
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; }
-        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; font-family: 'Poppins', sans-serif; }
-
-        .submit-btn { 
-            width: 100%; padding: 15px; background: var(--coffee); color: white; border: none; 
-            border-radius: 50px; font-weight: 600; cursor: pointer; font-size: 1.1rem; margin-top: 20px;
-        }
-        .submit-btn:hover { background: var(--accent); transform: scale(1.02); }
-        
-        #statusMessage { text-align: center; margin-top: 20px; font-weight: 600; display: none; }
+        .back-home { display: block; text-align: center; margin-top: 20px; color: white; text-decoration: none; font-size: 0.8rem; opacity: 0.5; }
     </style>
 </head>
 <body>
-    <nav>
-        <img src="logo.png" alt="Logo">
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="service.html">Service</a>
-            <a href="about.html">About</a>
-        </div>
-    </nav>
-
-    <div class="container">
-        <h1>Place Your Order</h1>
-        <p style="text-align: center; opacity: 0.7; margin-bottom: 30px;">Your order will be saved to our system.</p>
-        
+    <div class="order-container">
+        <h1>PLACE ORDER</h1>
         <form id="orderForm">
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" id="custName" placeholder="Enter your name" required>
+            <div class="input-group">
+                <label>Name</label>
+                <input type="text" id="custName" required>
             </div>
-            <div class="form-group">
-                <label>Select Menu</label>
-                <select id="custMenu" required>
-                    <option value="">-- Choose Item --</option>
+            <div class="input-group">
+                <label>Product</label>
+                <select id="custMenu">
                     <option>Signature Cake</option>
-                    <option>Afternoon Delight</option>
+                    <option>Creamy Shakes</option>
                     <option>Caramel Iced Coffee</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label>Delivery Address</label>
-                <textarea id="custAddress" rows="3" placeholder="Your address" required></textarea>
+            <div class="input-group">
+                <label>Note to Barista</label>
+                <textarea id="custNote" rows="2"></textarea>
             </div>
-            <button type="submit" class="submit-btn">Confirm & Save Order</button>
+            <button type="submit" class="submit-btn">SEND TO SYSTEM</button>
         </form>
-        <div id="statusMessage"></div>
+        <a href="index.html" class="back-home">← Back to Sanctuary</a>
     </div>
 
-    <!-- Firebase SDK (Koneksi ke Database) -->
+    <!-- Firebase SDK (Koneksi ke Database Kamu) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
     <script>
-        // Konfigurasi Asli dari Firebase Kamu
         const firebaseConfig = {
           apiKey: "AIzaSyD2IZrX7xpG9hU_8Rfx2th9-Gbbb7zTQ9k",
           authDomain: "cream-and-crumbs.firebaseapp.com",
@@ -80,40 +58,21 @@
           projectId: "cream-and-crumbs",
           storageBucket: "cream-and-crumbs.firebasestorage.app",
           messagingSenderId: "276859335812",
-          appId: "1:276859335812:web:b52580fed0c6dfce18fed1",
-          measurementId: "G-PRETY3NZPX"
+          appId: "1:276859335812:web:b52580fed0c6dfce18fed1"
         };
-
-        // Inisialisasi Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
-        // Proses Simpan Data
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const name = document.getElementById('custName').value;
-            const menu = document.getElementById('custMenu').value;
-            const address = document.getElementById('custAddress').value;
-            const status = document.getElementById('statusMessage');
-
-            // Simpan ke Realtime Database
-            const newOrderRef = database.ref('orders').push();
-            newOrderRef.set({
-                customer_name: name,
-                item_ordered: menu,
-                delivery_address: address,
-                order_date: new Date().toLocaleString()
-            })
-            .then(() => {
-                status.style.display = "block";
-                status.innerText = "Order successfully saved! ✅";
-                status.style.color = "green";
-                document.getElementById('orderForm').reset();
-            })
-            .catch((error) => {
-                status.innerText = "Error: " + error.message;
-                status.style.color = "red";
+            database.ref('orders').push().set({
+                name: document.getElementById('custName').value,
+                item: document.getElementById('custMenu').value,
+                note: document.getElementById('custNote').value,
+                date: new Date().toLocaleString()
+            }).then(() => { 
+                alert("Order Embarked! See you soon. ✅"); 
+                window.location.href = "index.html";
             });
         });
     </script>
