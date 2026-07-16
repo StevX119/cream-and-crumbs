@@ -3,38 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cream & Crumbs | Elite Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Cream & Crumbs | The Divine Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --coffee: #1a0f07; --gold: #c5a059; --cream: #fdf5e6; --glass: rgba(255, 255, 255, 0.03); }
-        * { box-sizing: border-box; transition: 0.5s ease; }
-        body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--coffee); color: var(--cream); overflow-x: hidden; }
+        :root { --gold: #c5a059; --coffee-dark: #120a05; --glass: rgba(255, 255, 255, 0.05); }
         
-        /* Navbar */
-        nav { background: rgba(26, 15, 7, 0.9); backdrop-filter: blur(15px); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        nav img { height: 50px; }
-        .nav-links a { text-decoration: none; color: var(--cream); margin-left: 25px; font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+        
+        body { 
+            background: radial-gradient(circle at center, #2c1e12 0%, var(--coffee-dark) 100%);
+            color: #fdf5e6;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
 
-        /* Content */
-        .container { max-width: 1000px; margin: 80px auto; padding: 0 20px; text-align: center; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 5rem; letter-spacing: 15px; color: var(--gold); margin: 0; }
-        .slogan { font-size: 1.2rem; letter-spacing: 5px; color: var(--gold); margin: 20px 0 50px; }
+        /* Navbar Fantastis */
+        nav { 
+            background: rgba(18, 10, 5, 0.8); 
+            backdrop-filter: blur(20px); 
+            padding: 20px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+        nav img { height: 50px; filter: drop-shadow(0 0 10px var(--gold)); }
+        .nav-links a { text-decoration: none; color: #fff; margin-left: 30px; font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--gold); text-shadow: 0 0 20px var(--gold); }
 
-        .service-card { background: var(--glass); border: 1px solid rgba(197, 160, 89, 0.3); padding: 60px; border-radius: 40px; backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .price-img { width: 100%; max-width: 600px; border-radius: 20px; border: 1px solid var(--gold); filter: grayscale(20%) contrast(110%); margin: 40px 0; }
-        .price-img:hover { filter: grayscale(0%); transform: scale(1.02); box-shadow: 0 0 30px var(--gold); }
+        /* Header Page */
+        .page-header { height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .page-header h1 { font-family: 'Playfair Display', serif; font-size: 5rem; letter-spacing: 15px; color: var(--gold); text-transform: uppercase; }
+        .page-header p { font-style: italic; letter-spacing: 4px; margin-top: 10px; opacity: 0.7; }
 
-        .order-btn { display: inline-block; background: var(--gold); color: var(--coffee); padding: 20px 60px; text-decoration: none; border-radius: 50px; font-weight: 600; margin-top: 30px; letter-spacing: 2px; }
-        .order-btn:hover { background: white; transform: translateY(-5px); }
+        /* Menu Grid Section */
+        .container { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; }
+        
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
+        
+        .menu-card { 
+            background: var(--glass); 
+            border: 1px solid rgba(197, 160, 89, 0.1); 
+            border-radius: 30px; 
+            padding: 40px; 
+            text-align: center; 
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card:hover { 
+            transform: translateY(-20px); 
+            border-color: var(--gold); 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 20px rgba(197, 160, 89, 0.2);
+        }
+        .menu-card h3 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); margin-bottom: 15px; }
+        .menu-card p { font-size: 0.9rem; line-height: 1.8; opacity: 0.8; margin-bottom: 25px; }
+        
+        /* Highlight Price Image */
+        .price-section { margin-top: 80px; text-align: center; }
+        .price-frame { 
+            display: inline-block; 
+            padding: 15px; 
+            background: linear-gradient(45deg, var(--gold), #5a4028); 
+            border-radius: 25px; 
+            box-shadow: 0 0 50px rgba(197, 160, 89, 0.3);
+        }
+        .price-frame img { width: 100%; max-width: 700px; border-radius: 15px; display: block; }
 
-        /* Mini Review Section */
-        .mini-reviews { margin-top: 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .mini-card { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 20px; font-size: 0.8rem; border-left: 3px solid var(--gold); text-align: left; }
+        /* Footer */
+        footer { padding: 60px; text-align: center; border-top: 1px solid rgba(197, 160, 89, 0.1); font-size: 0.7rem; letter-spacing: 3px; opacity: 0.5; }
+
+        .btn-order { 
+            display: inline-block; 
+            background: var(--gold); 
+            color: var(--coffee-dark); 
+            padding: 15px 45px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            letter-spacing: 2px; 
+            margin-top: 40px;
+        }
+        .btn-order:hover { background: #fff; transform: scale(1.1); box-shadow: 0 0 30px #fff; }
     </style>
 </head>
 <body>
+
     <nav>
-        <img src="logo.png" alt="Logo">
+        <img src="logo.png" alt="Cream & Crumbs">
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="service.html">Services</a>
@@ -42,23 +101,40 @@
         </div>
     </nav>
 
-    <div class="container">
+    <section class="page-header">
         <h1>SERVICES</h1>
-        <p class="slogan">"Where Sweet Treats Meet Great Coffee."</p> [1]
-        
-        <div class="service-card">
-            <p style="font-size: 1.1rem; line-height: 2; opacity: 0.8;">Welcome to Cream & Crumbs, your online destination for delicious coffee, creamy shakes, and irresistible sweet treats. We are passionate about serving high-quality drinks and desserts that bring comfort and happiness with every order.</p> [1]
-            
-            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-top: 50px;">ORDER NOW!</h2> [1]
-            <img src="price.png" class="price-img" alt="Price List"> [1]
-            <br>
-            <a href="order.html" class="order-btn">EXPERIENCE THE TASTE</a>
+        <p>"Where Sweet Treats Meet Great Coffee."</p>
+    </section>
+
+    <div class="container">
+        <!-- Penjelasan Menu Fantastis -->
+        <div class="menu-grid">
+            <div class="menu-card">
+                <h3>Coffee</h3>
+                <p>Freshly brewed beans selected from the finest estates to bring comfort to your morning.</p>
+            </div>
+            <div class="menu-card">
+                <h3>Shakes</h3>
+                <p>Creamy, rich, and indulgent shakes made with quality ingredients and care.</p>
+            </div>
+            <div class="menu-card">
+                <h3>Treats</h3>
+                <p>Irresistible sweet treats and delightful snacks to satisfy your every craving.</p>
+            </div>
         </div>
 
-        <div class="mini-reviews">
-            <div class="mini-card">"Caramel Coffee-nya bener-bener nagih, manisnya pas!" - Rina</div>
-            <div class="mini-card">"Shakes-nya creamy banget, gak ada lawan di kota ini." - Budi</div>
+        <!-- Bagian Price List yang Wah -->
+        <div class="price-section">
+            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 30px;">THE PRICE LIST</h2>
+            <div class="price-frame">
+                <img src="price.png" alt="Cream & Crumbs Menu">
+            </div>
+            <br>
+            <a href="order.html" class="btn-order">START YOUR JOURNEY</a>
         </div>
     </div>
+
+    <footer>&copy; 2026 CREAM & CRUMBS CAFÉ | BEYOND ORDINARY</footer>
+
 </body>
 </html>
