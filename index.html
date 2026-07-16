@@ -3,21 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cream & Crumbs Café | Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Cream & Crumbs | The Ultimate Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --coffee: #4b3621; --cream: #fdf5e6; --accent: #d2691e; }
-        * { box-sizing: border-box; transition: all 0.4s ease; }
-        body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--coffee); }
-        nav { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        nav img { height: 60px; }
-        .nav-links a { text-decoration: none; color: var(--coffee); margin-left: 30px; font-weight: 600; }
-        .hero { height: 60vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
-        .container { max-width: 1200px; margin: 60px auto; padding: 0 20px; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .card img { width: 100%; height: 250px; object-fit: cover; }
-        footer { background: var(--coffee); color: white; padding: 40px; text-align: center; }
+        :root { --coffee: #2c1e12; --gold: #c5a059; --cream: #fdf5e6; --glass: rgba(255, 255, 255, 0.1); }
+        * { box-sizing: border-box; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--coffee); color: var(--cream); overflow-x: hidden; }
+        
+        /* Navbar Transparan */
+        nav { background: rgba(44, 30, 18, 0.95); backdrop-filter: blur(10px); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--gold); }
+        nav img { height: 50px; filter: drop-shadow(0 0 10px var(--gold)); }
+        .nav-links a { text-decoration: none; color: var(--cream); margin-left: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; }
+        .nav-links a:hover { color: var(--gold); text-shadow: 0 0 15px var(--gold); }
+
+        /* Hero Section dengan Parallax */
+        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1350&q=80'); background-attachment: fixed; background-size: cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 8rem; margin: 0; letter-spacing: 10px; animation: glow 2s infinite alternate; }
+        @keyframes glow { from { text-shadow: 0 0 10px var(--gold); } to { text-shadow: 0 0 30px var(--gold), 0 0 50px var(--accent); } }
+
+        /* Review Section (Review Orang-orang) */
+        .reviews { padding: 80px 10%; background: #22150a; text-align: center; }
+        .review-grid { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; }
+        .review-card { min-width: 300px; background: var(--glass); border: 1px solid var(--gold); padding: 30px; border-radius: 20px; backdrop-filter: blur(5px); }
+        .review-card p { font-style: italic; font-size: 0.9rem; }
+        .stars { color: var(--gold); margin-bottom: 10px; }
+
+        /* Best Seller Section [1] */
+        .container { padding: 80px 5%; text-align: center; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .product-card { position: relative; border-radius: 30px; overflow: hidden; height: 400px; }
+        .product-card img { width: 100%; height: 100%; object-fit: cover; }
+        .product-info { position: absolute; bottom: 0; background: linear-gradient(transparent, var(--coffee)); width: 100%; padding: 40px 20px; transform: translateY(50px); opacity: 0; }
+        .product-card:hover .product-info { transform: translateY(0); opacity: 1; }
+
+        footer { border-top: 1px solid var(--gold); padding: 40px; text-align: center; font-size: 0.8rem; letter-spacing: 2px; }
     </style>
 </head>
 <body>
@@ -27,22 +46,55 @@
             <a href="index.html">Home</a>
             <a href="service.html">Services</a>
             <a href="about.html">About</a>
-            <a href="order.html">Order Now</a>
+            <a href="order.html" style="border: 1px solid var(--gold); padding: 10px 20px; border-radius: 50px;">Order Now</a>
         </div>
     </nav>
+
     <div class="hero">
-        <h1 style="font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0;">WELCOME</h1>
-        <p style="font-size: 1.5rem; font-style: italic;">"Where Sweet Treats Meet Great Coffee."</p>
+        <h1 class="reveal">WELCOME</h1>
+        <p style="font-size: 1.5rem; letter-spacing: 5px;">"Where Sweet Treats Meet Great Coffee" [1]</p>
+        <div style="width: 100px; height: 2px; background: var(--gold); margin-top: 20px;"></div>
     </div>
+
     <div class="container">
-        <p style="font-size: 1.1rem; line-height: 1.8;">Welcome to Cream & Crumbs, your online destination for delicious coffee, creamy shakes, and irresistible sweet treats [2].</p>
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-top: 50px;">Our Best Seller</h2>
-        <div class="grid">
-            <div class="card"><img src="action.jpeg"><h3>Signature Cake</h3></div>
-            <div class="card"><img src="afiyet olsun 😋😋.jpeg"><h3>Afternoon Delight</h3></div>
-            <div class="card"><img src="Homemade Caramel Iced Coffee.jpeg"><h3>Iced Coffee</h3></div>
+        <h2 style="font-family: 'Playfair Display'; font-size: 3rem; color: var(--gold);">Our Best Sellers</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="action.jpeg">
+                <div class="product-info"><h3>Signature Cake</h3><p>Delight in every bite.</p></div>
+            </div>
+            <div class="product-card">
+                <img src="afiyet olsun 😋😋.jpeg">
+                <div class="product-info"><h3>Afternoon Delight</h3><p>Perfect for your break.</p></div>
+            </div>
+            <div class="product-card">
+                <img src="Homemade Caramel Iced Coffee.jpeg">
+                <div class="product-info"><h3>Iced Coffee</h3><p>Freshly brewed happiness [1].</p></div>
+            </div>
         </div>
     </div>
-    <footer>&copy; 2026 Cream & Crumbs Café.</footer>
+
+    <section class="reviews">
+        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--gold); margin-bottom: 40px;">What They Say</h2>
+        <div class="review-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Kopinya juara, kuenya lembut banget! Gak nyangka bisa pesen online sekeren ini."</p>
+                <cite>- Andi, Jakarta</cite>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"The best creamy shake I've ever had. Packagingnya super rapi!"</p>
+                <cite>- Sarah, Depok</cite>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Pelayanannya ramah banget, bener-bener bring comfort and happiness [4]."</p>
+                <cite>- Maya, Bekasi</cite>
+            </div>
+        </div>
+    </section>
+
+    <footer>&copy; 2026 CREAM & CRUMBS CAFÉ | CRAFTED FOR EXCELLENCE</footer>
 </body>
 </html>
