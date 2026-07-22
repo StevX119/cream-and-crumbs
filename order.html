@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cream & Crumbs | Elite Multi-Order System</title>
+    <title>Cream & Crumbs | The Divine Visual Menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #c5a059; --coffee: #1a0f07; --glass: rgba(255, 255, 255, 0.05); }
@@ -21,13 +21,12 @@
             justify-content: space-between; align-items: center; position: sticky;
             top: 0; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid var(--gold);
         }
-        /* PERBAIKAN LOGO: Ukuran dikecilkan (30px) agar tidak kegedean */
         nav img { height: 30px; filter: drop-shadow(0 0 5px var(--gold)); }
 
         .hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 2001; }
         .hamburger div { width: 25px; height: 3px; background: var(--gold); border-radius: 5px; }
 
-        /* SLIDE MENU (Kiri ke Kanan) */
+        /* Slide Menu (Sidebar) */
         .side-menu { 
             position: fixed; top: 0; left: -300px; width: 300px; height: 100%; 
             background: var(--coffee); z-index: 2000; padding: 100px 30px; 
@@ -35,20 +34,18 @@
         }
         .side-menu.active { left: 0; }
         .side-menu a { display: block; color: white; text-decoration: none; font-size: 1.2rem; margin-bottom: 25px; letter-spacing: 2px; }
-        .side-menu a:hover { color: var(--gold); padding-left: 10px; }
-
         .overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1999; }
         .overlay.active { display: block; }
 
         .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
-        h1 { font-family: 'Playfair Display', serif; text-align: center; font-size: 3.5rem; color: var(--gold); margin: 0; }
+        h1 { font-family: 'Playfair Display', serif; text-align: center; font-size: 4rem; color: var(--gold); margin: 0; }
         .slogan { text-align: center; letter-spacing: 3px; opacity: 0.7; margin-bottom: 50px; font-style: italic; }
 
-        /* Grid Menu & Price Label */
         .category-title {
             font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold);
             border-left: 6px solid var(--gold); padding-left: 20px; margin: 80px 0 30px;
         }
+
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
         .menu-item {
             background: var(--glass); border: 1px solid rgba(197, 160, 89, 0.2);
@@ -60,7 +57,6 @@
             color: var(--coffee); padding: 5px 12px; border-radius: 10px; font-weight: 700; font-size: 0.8rem; 
         }
 
-        /* Multi-Select Highlight */
         .menu-item.selected { background: var(--gold) !important; box-shadow: 0 0 40px var(--gold); transform: scale(1.05); }
         .menu-item.selected h4 { color: var(--coffee) !important; font-weight: 700; }
         .menu-item.selected::after {
@@ -69,7 +65,6 @@
             border-radius: 50%; line-height: 35px; font-weight: bold;
         }
 
-        /* Order Type & Form */
         .order-form-box { background: rgba(0,0,0,0.4); padding: 50px; border-radius: 40px; margin-top: 100px; border: 1px solid rgba(197, 160, 89, 0.3); backdrop-filter: blur(10px); }
         .order-type-container { display: flex; gap: 20px; margin-bottom: 25px; }
         .type-option { flex: 1; text-align: center; padding: 15px; border: 1px solid var(--gold); border-radius: 15px; cursor: pointer; font-weight: 600; color: var(--gold); }
@@ -95,7 +90,7 @@
     <div class="hamburger" onclick="toggleMenu()">
         <div></div><div></div><div></div>
     </div>
-    <img src="logo.png" alt="Logo"> [2, 4, 5]
+    <img src="logo.png" alt="Logo">
     <div style="width: 30px;"></div>
 </nav>
 
@@ -104,150 +99,150 @@
     <a href="index.html">HOME</a>
     <a href="service.html">SERVICES</a>
     <a href="about.html">ABOUT</a>
-    <a href="order.html" style="color: var(--gold);">ORDER NOW</a> [2]
+    <a href="order.html" style="color: var(--gold);">ORDER NOW</a>
 </div>
 
 <div class="container">
-    <h1>THE DIVINE MENU</h1> [2]
-    <p class="slogan">"Where Sweet Treats Meet Great Coffee."</p> [2, 5]
+    <h1>THE DIVINE MENU</h1>
+    <p class="slogan">"Where Sweet Treats Meet Great Coffee."</p>
 
     <!-- COFFEE SECTION -->
-    <h2 class="category-title">Elite Coffee Brews</h2> [2]
+    <h2 class="category-title">Elite Coffee Brews</h2>
     <div class="menu-grid">
         <div class="menu-item" onclick="toggleSelection(this, 'Caramel Iced Coffee', 'Rp 35k')">
             <span class="price-label">Rp 35k</span>
-            <img src="Homemade Caramel Iced Coffee.jpeg"><h4>Caramel Iced Coffee</h4> [6]
+            <img src="Homemade Caramel Iced Coffee.jpeg"><h4>Caramel Iced Coffee</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Midnight Espresso', 'Rp 30k')">
             <span class="price-label">Rp 30k</span>
-            <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400"><h4>Midnight Espresso</h4> [6]
+            <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400"><h4>Midnight Espresso</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Classic Americano', 'Rp 25k')">
             <span class="price-label">Rp 25k</span>
-            <img src="amerika.jpeg"><h4>Classic Americano</h4> [7]
+            <img src="amerika.jpeg"><h4>Classic Americano</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Affogato', 'Rp 32k')">
             <span class="price-label">Rp 32k</span>
-            <img src="affo.jpeg"><h4>Affogato</h4> [7]
+            <img src="affo.jpeg"><h4>Affogato</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Matcha Coffee', 'Rp 38k')">
             <span class="price-label">Rp 38k</span>
-            <img src="matcha.jpeg"><h4>Matcha Coffee</h4> [7]
+            <img src="matcha.jpeg"><h4>Matcha Coffee</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Vanilla Macchiato', 'Rp 35k')">
             <span class="price-label">Rp 35k</span>
-            <img src="vanila.jpeg"><h4>Vanilla Macchiato</h4> [8]
+            <img src="vanila.jpeg"><h4>Vanilla Macchiato</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Flat White Coffee', 'Rp 33k')">
             <span class="price-label">Rp 33k</span>
-            <img src="flat.jpeg"><h4>Flat White Coffee</h4> [8]
+            <img src="flat.jpeg"><h4>Flat White Coffee</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Cappucino', 'Rp 30k')">
             <span class="price-label">Rp 30k</span>
-            <img src="cappu.jpeg"><h4>Cappucino</h4> [8]
+            <img src="cappu.jpeg"><h4>Cappucino</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Gold Coffee', 'Rp 40k')">
             <span class="price-label">Rp 40k</span>
-            <img src="gold.jpeg"><h4>Gold Coffee</h4> [9]
+            <img src="gold.jpeg"><h4>Gold Coffee</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Red Velvet Coffee', 'Rp 38k')">
             <span class="price-label">Rp 38k</span>
-            <img src="red.jpeg"><h4>Red Velvet Coffee</h4> [9]
+            <img src="red.jpeg"><h4>Red Velvet Coffee</h4>
         </div>
     </div>
 
     <!-- TREATS SECTION -->
-    <h2 class="category-title">Signature Cakes & Treats</h2> [9]
+    <h2 class="category-title">Signature Cakes & Treats</h2>
     <div class="menu-grid">
         <div class="menu-item" onclick="toggleSelection(this, 'Signature Chocolate Cake', 'Rp 50k')">
             <span class="price-label">Rp 50k</span>
-            <img src="https://cakespade.com/wp-content/uploads/2023/08/WhatsApp-Image-2025-04-24-at-3.56.54-PM.jpeg"><h4>Signature Cake</h4> [10]
+            <img src="https://cakespade.com/wp-content/uploads/2023/08/WhatsApp-Image-2025-04-24-at-3.56.54-PM.jpeg"><h4>Signature Cake</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'New York Cheesecake', 'Rp 45k')">
             <span class="price-label">Rp 45k</span>
-            <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400"><h4>New York Cheesecake</h4> [10]
+            <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400"><h4>New York Cheesecake</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Red Velvet Fantasy', 'Rp 48k')">
             <span class="price-label">Rp 48k</span>
-            <img src="https://bkmedia.bakingo.com/mouth-watering-red-velvet-past0163redv-AAAA.jpg?tr=w-665,h-665,dpr-1&q=50"><h4>Red Velvet Fantasy</h4> [11]
+            <img src="https://bkmedia.bakingo.com/mouth-watering-red-velvet-past0163redv-AAAA.jpg?tr=w-665,h-665,dpr-1&q=50"><h4>Red Velvet Fantasy</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Classic Tiramisu', 'Rp 45k')">
             <span class="price-label">Rp 45k</span>
-            <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400"><h4>Classic Tiramisu</h4> [11]
+            <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400"><h4>Classic Tiramisu</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Berry Shortcake', 'Rp 42k')">
             <span class="price-label">Rp 42k</span>
-            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400"><h4>Berry Shortcake</h4> [12]
+            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400"><h4>Berry Shortcake</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Blueberry Muffin', 'Rp 25k')">
             <span class="price-label">Rp 25k</span>
-            <img src="https://i0.wp.com/www.zoebakes.com/wp-content/uploads/2019/02/Big-Blueberry-Muffins-ZoeBakes-photo-by-Zo%C3%AB-Fran%C3%A7ois-17-of-9.jpg?resize=683%2C1024&ssl=1"><h4>Blueberry Muffin</h4> [12]
+            <img src="https://i0.wp.com/www.zoebakes.com/wp-content/uploads/2019/02/Big-Blueberry-Muffins-ZoeBakes-photo-by-Zo%C3%AB-Fran%C3%A7ois-17-of-9.jpg?resize=683%2C1024&ssl=1"><h4>Blueberry Muffin</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Almond Croissant', 'Rp 28k')">
             <span class="price-label">Rp 28k</span>
-            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400"><h4>Almond Croissant</h4> [13]
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400"><h4>Almond Croissant</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Rainbow Doughnut', 'Rp 20k')">
             <span class="price-label">Rp 20k</span>
-            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400"><h4>Rainbow Doughnut</h4> [13]
+            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400"><h4>Rainbow Doughnut</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Zesty Carrot Cake', 'Rp 35k')">
             <span class="price-label">Rp 35k</span>
-            <img src="https://www.wholesomeyum.com/wp-content/uploads/2025/03/wholesomeyum-Healthy-Carrot-Cake-23.jpg"><h4>Zesty Carrot Cake</h4> [14]
+            <img src="https://www.wholesomeyum.com/wp-content/uploads/2025/03/wholesomeyum-Healthy-Carrot-Cake-23.jpg"><h4>Zesty Carrot Cake</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Molten Lava Cake', 'Rp 40k')">
             <span class="price-label">Rp 40k</span>
-            <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=400"><h4>Molten Lava Cake</h4> [15]
+            <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=400"><h4>Molten Lava Cake</h4>
         </div>
     </div>
 
     <!-- SHAKES SECTION -->
-    <h2 class="category-title">Pure Creamy Shakes</h2> [15]
+    <h2 class="category-title">Pure Creamy Shakes</h2>
     <div class="menu-grid">
         <div class="menu-item" onclick="toggleSelection(this, 'Afternoon Delight Shake', 'Rp 35k')">
             <span class="price-label">Rp 35k</span>
-            <img src="afiyet olsun  .jpeg"><h4>Afternoon Delight</h4> [15]
+            <img src="afiyet olsun  .jpeg"><h4>Afternoon Delight</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Pure Vanilla Cloud', 'Rp 32k')">
             <span class="price-label">Rp 32k</span>
-            <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400"><h4>Pure Vanilla Cloud</h4> [16]
+            <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400"><h4>Pure Vanilla Cloud</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Double Choco Blast', 'Rp 35k')">
             <span class="price-label">Rp 35k</span>
-            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400"><h4>Double Choco Blast</h4> [16]
+            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400"><h4>Double Choco Blast</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Strawberry Dream', 'Rp 35k')">
             <span class="price-label">Rp 35k</span>
-            <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400"><h4>Strawberry Dream</h4> [17]
+            <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400"><h4>Strawberry Dream</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Oreo Overload', 'Rp 38k')">
             <span class="price-label">Rp 38k</span>
-            <img src="https://cdn.tipsybartender.com/tipsybartender/jpg/wp-content/uploads/2018/01/OreoAndIrishCreamShakeThumb.jpg?width=560"><h4>Oreo Overload</h4> [17]
+            <img src="https://cdn.tipsybartender.com/tipsybartender/jpg/wp-content/uploads/2018/01/OreoAndIrishCreamShakeThumb.jpg?width=560"><h4>Oreo Overload</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Avocado Supreme', 'Rp 40k')">
             <span class="price-label">Rp 40k</span>
-            <img src="https://www.pingdesserts.com/wp-content/uploads/2019/03/avocado-float-supreme-4.jpg"><h4>Avocado Supreme</h4> [18]
+            <img src="https://www.pingdesserts.com/wp-content/uploads/2019/03/avocado-float-supreme-4.jpg"><h4>Avocado Supreme</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Matcha Zen', 'Rp 38k')">
             <span class="price-label">Rp 38k</span>
-            <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=400"><h4>Matcha Zen</h4> [18]
+            <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=400"><h4>Matcha Zen</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Salted Caramel Silk', 'Rp 40k')">
             <span class="price-label">Rp 40k</span>
-            <img src="https://www.silkcanada.ca/wp-content/uploads/2020/06/Caf%C3%A9-moka-au-caramel-sal%C3%A9-scaled.jpeg"><h4>Salted Caramel Silk</h4> [19]
+            <img src="https://www.silkcanada.ca/wp-content/uploads/2020/06/Caf%C3%A9-moka-au-caramel-sal%C3%A9-scaled.jpeg"><h4>Salted Caramel Silk</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Banana Fusion', 'Rp 35k')">
             <span class="price-label">Rp 35k</span>
-            <img src="https://shop.coolbreezebeverages.com/cdn/shop/products/Webp.net-resizeimage_8.jpg?v=1597428537&width=1080"><h4>Banana Fusion</h4> [19]
+            <img src="https://shop.coolbreezebeverages.com/cdn/shop/products/Webp.net-resizeimage_8.jpg?v=1597428537&width=1080"><h4>Banana Fusion</h4>
         </div>
         <div class="menu-item" onclick="toggleSelection(this, 'Tropical Mango', 'Rp 38k')">
             <span class="price-label">Rp 38k</span>
-            <img src="https://cdn.create.vista.com/api/media/medium/61551835/stock-photo-mango-with-pineapple-smoothie?token="><h4>Tropical Mango</h4> [20]
+            <img src="https://cdn.create.vista.com/api/media/medium/61551835/stock-photo-mango-with-pineapple-smoothie?token="><h4>Tropical Mango</h4>
         </div>
     </div>
 
     <div class="order-form-box">
-        <h2 style="color:var(--gold); text-align:center; margin-bottom:40px;">FINALIZE SELECTION</h2> [20]
+        <h2 style="color:var(--gold); text-align:center; margin-bottom:40px;">FINALIZE SELECTION</h2>
         
         <label style="display:block; margin-bottom:10px; color:var(--gold); font-size:0.8rem; letter-spacing:2px;">SELECT ORDER TYPE</label>
         <div class="order-type-container">
@@ -256,20 +251,19 @@
         </div>
 
         <form id="finalOrderForm">
-            <input type="text" id="custName" placeholder="Enter Your Full Name" required> [20]
-            <textarea id="custAddress" placeholder="Address (Type 'Pick Up Point' if choosing Pick Up)" rows="3" required></textarea> [21]
+            <input type="text" id="custName" placeholder="Enter Your Full Name" required>
+            <textarea id="custAddress" placeholder="Address (Type 'Pick Up Point' if choosing Pick Up)" rows="3" required></textarea>
             
             <div class="summary-box">
-                <p style="margin-bottom: 10px;"><strong>Order Summary:</strong></p>
-                <p id="summaryText">None (Click images to add multiple items)</p> [21, 22]
+                <p id="summaryText">None (Click images to add multiple items)</p>
             </div>
-            <button type="submit" class="submit-btn">CONFIRM & DISPATCH</button> [21]
+            <button type="submit" class="submit-btn">CONFIRM & DISPATCH</button>
         </form>
     </div>
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script> [23]
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script> [23]
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 <script>
 const firebaseConfig = {
     apiKey: "AIzaSyD2IZrX7xpG9hU_8Rfx2th9-Gbbb7zTQ9k",
@@ -279,9 +273,9 @@ const firebaseConfig = {
     storageBucket: "cream-and-crumbs.firebasestorage.app",
     messagingSenderId: "276859335812",
     appId: "1:276859335812:web:b52580fed0c6dfce18fed1"
-}; [23, 24]
+};
 firebase.initializeApp(firebaseConfig);
-const database = firebase.database(); [24]
+const database = firebase.database();
 
 let selectedItems = [];
 let orderType = "Delivery";
@@ -300,20 +294,18 @@ function setType(element, type) {
 function toggleSelection(element, name, price) {
     element.classList.toggle('selected');
     const itemString = `${name} (${price})`;
-    
     if (element.classList.contains('selected')) {
         selectedItems.push(itemString);
     } else {
         selectedItems = selectedItems.filter(item => item !== itemString);
     }
-    
     document.getElementById('summaryText').innerHTML = selectedItems.length > 0 ? selectedItems.join("<br>") : "None";
 }
 
 document.getElementById('finalOrderForm').addEventListener('submit', function(e) {
     e.preventDefault();
     if(selectedItems.length === 0) {
-        alert("Choose at least one item first!"); return; [25]
+        alert("Pilih menu dulu!"); return;
     }
     database.ref('orders').push().set({
         customer: document.getElementById('custName').value,
@@ -322,8 +314,8 @@ document.getElementById('finalOrderForm').addEventListener('submit', function(e)
         items: selectedItems,
         date: new Date().toLocaleString()
     }).then(() => {
-        alert("Order Embarked! Check your Firebase Console."); [25]
-        window.location.href = "index.html"; [25]
+        alert("Pesanan Terkirim! Tipe: " + orderType);
+        window.location.href = "index.html";
     });
 });
 </script>
